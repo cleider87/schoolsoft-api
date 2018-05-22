@@ -1,0 +1,48 @@
+{
+  "name": "schoolsoft-api",
+  "version": "1.0.0",
+  "description": "API SchoolSoft",
+  "scripts": {
+    "start": "node index.js",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha && codecov ",
+    "test": "mocha test/test.js"
+  },
+  "bin": {
+    "codecov": "./bin/codecov"
+  },
+  "main": "index.js",
+  "keywords": [
+    "tdd",
+    "practices"
+  ],
+  "author": "Cleider Herrera <cleider87@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:cleider87/schoolsoft-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cleider87/schoolsoft-api/issues"
+  },
+  "homepage": "https://github.com/cleider87/schoolsoft-api#readme",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.16",
+    "morgan": "^1.9.0",
+    "opbeat": "^4.17.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.1.1",
+    "mongoose-mock": "^0.4.0",
+    "proxyquire": "^2.0.1",
+    "should": "^13.2.1",
+    "sinon": "^4.5.0",
+    "sinon-chai": "^3.0.0",
+    "sinon-mongoose": "^2.1.1"
+  }
+}
