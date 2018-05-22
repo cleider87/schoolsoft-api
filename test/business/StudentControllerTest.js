@@ -13,7 +13,7 @@ var StudentModel = require('../../models/StudentModel')
 
 describe('StudentController TestCases', function () {
   describe('Create Student', function () {
-    it('Should call create user', function () {
+    it('Should call create student', function () {
       var saveStub = sinon.stub()
 
       function StudentTest () {
@@ -22,7 +22,7 @@ describe('StudentController TestCases', function () {
 
       var req = {
         body: {
-          documento: '000000000',
+          document: '000000000',
           firstname: 'Cleider',
           lsstname: 'Herrera',
           email: 'cleider87@gmail.com'
@@ -36,40 +36,40 @@ describe('StudentController TestCases', function () {
     })
 
     it('Should save an Student', function (done) {
-      var userMock = sinon.mock(new StudentModel({
-          documento: '000000000',
+      var studentMock = sinon.mock(new StudentModel({
+          document: '000000000',
           firstname: 'Cleider',
           lsstname: 'Herrera',
           email: 'cleider87@gmail.com'
         }))
 
-      var user = userMock.object
+      var student = studentMock.object
       var expectedResult = {status: true}
-      userMock.expects('save').yields(null, expectedResult)
+      studentMock.expects('save').yields(null, expectedResult)
 
-      user.save(function (err, result) {
-        userMock.verify()
-        userMock.restore()
+      student.save(function (err, result) {
+        studentMock.verify()
+        studentMock.restore()
         expect(result.status).to.be.true
         done()
       })
     })
 
     it('Should return error, if post not saved', function (done) {
-      var userMock = sinon.mock(new StudentModel({
-          documento: '000000000',
+      var studentMock = sinon.mock(new StudentModel({
+          document: '000000000',
           firstname: 'Cleider',
           lsstname: 'Herrera',
           email: 'cleider87@gmail.com'
         }))
 
-      var user = userMock.object
+      var student = studentMock.object
       var expectedResult = {status: false}
-      userMock.expects('save').yields(expectedResult, null)
+      studentMock.expects('save').yields(expectedResult, null)
 
-      user.save(function (err, result) {
-        userMock.verify()
-        userMock.restore()
+      student.save(function (err, result) {
+        studentMock.verify()
+        studentMock.restore()
         expect(err.status).to.not.be.true
         done()
       })
@@ -78,28 +78,28 @@ describe('StudentController TestCases', function () {
 
   describe('List Students', function () {
     it('Should call find once', function (done) {
-      var userMock = sinon.mock(StudentModel)
-      var expectedResult = {status: true, user: []}
+      var studentMock = sinon.mock(StudentModel)
+      var expectedResult = {status: true, student: []}
 
-      userMock.expects('find').yields(null, expectedResult)
+      studentMock.expects('find').yields(null, expectedResult)
 
       StudentModel.find(function (err, result) {
-        userMock.verify()
-        userMock.restore()
+        studentMock.verify()
+        studentMock.restore()
         expect(result.status).to.be.true
         done()
       })
     })
 
     it('Should return error', function (done) {
-      var userMock = sinon.mock(StudentModel)
+      var studentMock = sinon.mock(StudentModel)
       var expectedResult = {status: false, error: 'Something went wrong'}
 
-      userMock.expects('find').yields(expectedResult, null)
+      studentMock.expects('find').yields(expectedResult, null)
 
       StudentModel.find(function (err, result) {
-        userMock.verify()
-        userMock.restore()
+        studentMock.verify()
+        studentMock.restore()
         expect(err.status).to.not.be.true
         done()
       })
@@ -107,41 +107,41 @@ describe('StudentController TestCases', function () {
   })
 
   describe('Update an Student', function () {
-    it('Should update the user with new value', function (done) {
-      var userMock = sinon.mock(new StudentModel({
-          documento: '000000000',
+    it('Should update the student with new value', function (done) {
+      var studentMock = sinon.mock(new StudentModel({
+          document: '000000000',
           firstname: 'Cleider',
           lsstname: 'Herrera',
           email: 'cleider87@gmail.com'
         }))
-      var Student = userMock.object
+      var Student = studentMock.object
       var expectedResult = {status: true}
 
-      userMock.expects('save').withArgs({_id: 12345}).yields(null, expectedResult)
+      studentMock.expects('save').withArgs({_id: 12345}).yields(null, expectedResult)
 
       Student.save({_id: 12345}, function (err, result) {
-        userMock.verify()
-        userMock.restore()
+        studentMock.verify()
+        studentMock.restore()
         expect(result.status).to.be.true
         done()
       })
     })
 
     it('Should return error if update action is failed', function (done) {
-      var userMock = sinon.mock(new StudentModel({
-          documento: '000000000',
+      var studentMock = sinon.mock(new StudentModel({
+          document: '000000000',
           firstname: 'Cleider',
           lsstname: 'Herrera',
           email: 'cleider87@gmail.com'
         }))
-      var Student = userMock.object
+      var Student = studentMock.object
       var expectedResult = {status: false}
 
-      userMock.expects('save').withArgs({_id: 12345}).yields(expectedResult, null)
+      studentMock.expects('save').withArgs({_id: 12345}).yields(expectedResult, null)
 
       Student.save({_id: 12345}, function (err, result) {
-        userMock.verify()
-        userMock.restore()
+        studentMock.verify()
+        studentMock.restore()
         expect(err.status).to.not.be.true
         done()
       })
@@ -149,25 +149,25 @@ describe('StudentController TestCases', function () {
   })
 
   describe('Delete an Student', function () {
-    it('Should delete user of gived id', function (done) {
-      var userMock = sinon.mock(StudentModel)
+    it('Should delete student of gived id', function (done) {
+      var studentMock = sinon.mock(StudentModel)
       var expectedResult = {status: true}
-      userMock.expects('remove').withArgs({_id: 12345}).yields(null, expectedResult)
+      studentMock.expects('remove').withArgs({_id: 12345}).yields(null, expectedResult)
       StudentModel.remove({_id: 12345}, function (err, result) {
-        userMock.verify()
-        userMock.restore()
+        studentMock.verify()
+        studentMock.restore()
         expect(result.status).to.be.true
         done()
       })
     })
 
     it('Should return error if delete action is failed', function (done) {
-      var userMock = sinon.mock(StudentModel)
+      var studentMock = sinon.mock(StudentModel)
       var expectedResult = {status: false}
-      userMock.expects('remove').withArgs({_id: 12345}).yields(expectedResult, null)
+      studentMock.expects('remove').withArgs({_id: 12345}).yields(expectedResult, null)
       StudentModel.remove({_id: 12345}, function (err, result) {
-        userMock.verify()
-        userMock.restore()
+        studentMock.verify()
+        studentMock.restore()
         expect(err.status).to.not.be.true
         done()
       })

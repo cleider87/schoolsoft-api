@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var StudentSchema = Schema({
-  documento: {
+  document: {
     type: String,
     required: true
   },

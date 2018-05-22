@@ -31,4 +31,25 @@ describe('Routes TestCases', function () {
     })
     
   })
+  
+   describe('/api/v1/students', function () {
+    it('Responds with status 200', function (done) {
+      chai.request(app)
+        .get('/api/v1/students')
+        .end(function (err, res) {
+          expect(res).to.have.status(200)
+          done()
+        })
+    })
+
+    it('Responds with status 404', function (done) {
+      chai.request(app)
+        .get('/api/v1/student')
+        .end(function (err, res) {
+          expect(res).to.have.status(404)
+          done()
+        })
+    })
+    
+  })
 })
