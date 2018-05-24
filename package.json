@@ -12,8 +12,9 @@
   },
   "main": "index.js",
   "keywords": [
-    "tdd",
-    "practices"
+    "api",
+    "erp",
+    "crm"
   ],
   "author": "Cleider Herrera <cleider87@gmail.com>",
   "repository": {

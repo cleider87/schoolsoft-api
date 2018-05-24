@@ -1,5 +1,1 @@
-require('./business/UserControllerTest')
-require('./business/StudentControllerTest')
-require('./models/UserModelTest')
-require('./models/StudentModelTest')
 require('./app')

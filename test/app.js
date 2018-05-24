@@ -10,7 +10,7 @@ var expect = chai.expect
 
 chai.use(chaiHttp)
 
-describe('Routes TestCases', function () {
+describe('Procesos Básicos', function () {
   describe('/api/v1/users', function () {
     it('Responds with status 200', function (done) {
       chai.request(app)
@@ -19,37 +19,7 @@ describe('Routes TestCases', function () {
           expect(res).to.have.status(200)
           done()
         })
-    })
-
-    it('Responds with status 404', function (done) {
-      chai.request(app)
-        .get('/api/v1/user')
-        .end(function (err, res) {
-          expect(res).to.have.status(404)
-          done()
-        })
-    })
-    
+    })    
   })
-  
-   describe('/api/v1/students', function () {
-    it('Responds with status 200', function (done) {
-      chai.request(app)
-        .get('/api/v1/students')
-        .end(function (err, res) {
-          expect(res).to.have.status(200)
-          done()
-        })
-    })
 
-    it('Responds with status 404', function (done) {
-      chai.request(app)
-        .get('/api/v1/student')
-        .end(function (err, res) {
-          expect(res).to.have.status(404)
-          done()
-        })
-    })
-    
-  })
 })

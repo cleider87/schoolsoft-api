@@ -1,0 +1,139 @@
+swagger: "2.0"
+info:
+  title: "API SchoolSoft"
+  description: "API Services Module from SchoolSoft"
+  version: "1.0.0"
+host: localhost:3000
+basePath: /api/
+schemes: 
+  - https
+  - http
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /users:
+    x-swagger-router-controller: users
+    post:
+      tags:
+      - "Create user"
+      description: ""
+      operationId: "postUser"
+      parameters:
+        - name: user
+          in: body
+          schema:
+            $ref: "#/definitions/user"
+      responses:
+        200:
+          description: "OK"
+        405:
+          description: "FAIL: Invalid input"
+    get:
+      tags:
+      - "Get users"
+      operationId: "getUsers"
+      responses:
+        200:
+          description: "OK"
+  /clients:
+    x-swagger-router-controller: clients
+    post:
+      tags:
+      - "Create client"
+      description: ""
+      operationId: "postClient"
+      parameters:
+        - name: client
+          in: body
+          schema:
+            $ref: "#/definitions/client"
+      responses:
+        200:
+          description: "OK"
+        405:
+          description: "FAIL: Invalid input"
+    get:
+      tags:
+        - "Get clients"
+      description: ""
+      operationId: "getClients"
+      responses:
+        200:
+          description: "OK"
+  /sales:
+    x-swagger-router-controller: sales
+    post:
+      tags:
+      - "Create sale"
+      description: ""
+      operationId: "postSale"
+      parameters:
+        - name: sale
+          in: body
+          schema:
+            $ref: "#/definitions/sale"
+      responses:
+        200:
+          description: "OK"
+        405:
+          description: "FAIL: Invalid input"
+    get:
+      tags:
+        - "Get sales"
+      description: ""
+      operationId: "getSales"
+      responses:
+        200:
+          description: "OK"
+  /process:
+    x-swagger-router-controller: process
+    post:
+      tags:
+      - "Create process"
+      description: ""
+      operationId: "postProcess"
+      parameters:
+        - name: process
+          in: body
+          schema:
+            $ref: "#/definitions/process"
+      responses:
+        200:
+          description: "OK"
+        405:
+          description: "FAIL: Invalid input"
+    get:
+      tags:
+        - "Get process"
+      description: ""
+      operationId: "getProcess"
+      responses:
+        200:
+          description: "OK"        
+          
+definitions:
+  user:
+    type: object
+    required:
+      - username
+      - email
+      - data
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      pass:
+        type: string
+      data:
+        type: array
+        items:
+          uniqueItems: true
+  process:
+    type: object
+  client:
+    type: object
+  sale:
+    type: object

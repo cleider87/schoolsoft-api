@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 // parse application/vnd.api+json as json
 app.use(bodyParser.json({type: 'application/vnd.api+json'}))
 
-require('./routes/v1')(app)
+//require('./routes/v1')(app)
 
 if (process.env.NODE_ENV === 'test') {
   mongoose.connect(config.test_db)
